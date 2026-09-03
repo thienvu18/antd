@@ -1,9 +1,9 @@
-# @formily/antd-v5
+# @thienvu18/formily-antd-v6
 
 > Formily Component Adaptor
 
 ## Install
 
 ```bash
-npm install @formily/antd-v5 --save
+npm install @thienvu18/formily-antd-v6 --save
 ```

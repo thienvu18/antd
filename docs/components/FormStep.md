@@ -8,7 +8,12 @@
 
 ```tsx
 import React from 'react'
-import { FormStep, FormItem, Input, FormButtonGroup } from '@formily/antd-v5'
+import {
+  FormStep,
+  FormItem,
+  Input,
+  FormButtonGroup,
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, FormConsumer, createSchemaField } from '@formily/react'
 import { Button } from 'antd'
@@ -107,7 +112,12 @@ export default () => {
 
 ```tsx
 import React from 'react'
-import { FormStep, FormItem, Input, FormButtonGroup } from '@formily/antd-v5'
+import {
+  FormStep,
+  FormItem,
+  Input,
+  FormButtonGroup,
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, FormConsumer, createSchemaField } from '@formily/react'
 import { Button } from 'antd'
@@ -237,7 +247,7 @@ Other references <https://ant.design/components/steps-cn/>
 
 ### FormStep.StepPane
 
-Refer to <https://ant.design/components/steps-cn/> Steps.Step properties
+Refer to <https://ant.design/components/steps/> item properties
 
 ### FormStep.createFormStep
 

@@ -1,1 +1,2 @@
-import 'antd/lib/date-picker/style/index'
+// Ant Design 6 injects component styles through its CSS-in-JS runtime.
+export {}

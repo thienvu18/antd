@@ -22,6 +22,8 @@ package/
 package.zip
 .umi
 .umi-production
+.dumi/
+.yarn/install-state.gz
 .cjsescache
 doc-site
 .lerna-changelog

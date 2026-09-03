@@ -1,7 +1,7 @@
 export default {
   mode: 'site',
   logo: '//img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg',
-  title: 'Ant Design V5',
+  title: 'Formily Ant Design v6',
   hash: true,
   favicon:
     '//img.alicdn.com/imgextra/i3/O1CN01XtT3Tv1Wd1b5hNVKy_!!6000000002810-55-tps-360-360.svg',
@@ -13,7 +13,7 @@ export default {
   navs: {
     'zh-CN': [
       {
-        title: 'Ant Design V5',
+        title: 'Ant Design v6',
         path: '/zh-CN/components',
       },
       {
@@ -22,12 +22,12 @@ export default {
       },
       {
         title: 'GITHUB',
-        path: 'https://github.com/formilyjs/antd',
+        path: 'https://github.com/thienvu18/antd',
       },
     ],
     'en-US': [
       {
-        title: 'Ant Design V5',
+        title: 'Ant Design v6',
         path: '/components',
       },
       {
@@ -36,7 +36,7 @@ export default {
       },
       {
         title: 'GITHUB',
-        path: 'https://github.com/alibaba/formily',
+        path: 'https://github.com/thienvu18/antd',
       },
     ],
   },

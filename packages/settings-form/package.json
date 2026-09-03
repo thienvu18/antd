@@ -1,17 +1,15 @@
 {
-  "name": "@formily/antd-v5-settings-form",
-  "version": "1.2.4",
-  "license": "MIT",
-  "main": "lib",
-  "types": "lib/index.d.ts",
-  "engines": {
-    "npm": ">=3.0.0"
+  "name": "@thienvu18/formily-antd-v6-settings-form",
+  "version": "2.0.0",
+  "homepage": "https://github.com/thienvu18/antd#readme",
+  "bugs": {
+    "url": "https://github.com/thienvu18/antd/issues"
   },
-  "module": "esm",
-  "umd:main": "dist/formily.antd-settings-form.umd.production.js",
-  "unpkg": "dist/formily.antd-settings-form.umd.production.js",
-  "jsdelivr": "dist/formily.antd-settings-form.umd.production.js",
-  "jsnext:main": "esm",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienvu18/antd.git"
+  },
+  "license": "MIT",
   "sideEffects": [
     "dist/*",
     "esm/*.js",
@@ -21,23 +19,22 @@
     "*.scss",
     "**/*/style.js"
   ],
+  "main": "lib",
+  "module": "esm",
+  "jsnext:main": "esm",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "formily-tpl build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/formilyjs/antd.git"
-  },
-  "bugs": {
-    "url": "https://github.com/formilyjs/antd/issues"
-  },
-  "homepage": "https://github.com/formilyjs/antd#readme",
-  "publishConfig": {
-    "access": "public"
+    "build": "node ../../scripts/build-package.cjs"
   },
   "peerDependencies": {
-    "react": ">=16.8.0 || >=17.0.0",
-    "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
+    "react": ">=19.0.0 <20.0.0",
+    "react-dom": ">=19.0.0 <20.0.0",
+    "react-is": ">=19.0.0 <20.0.0"
+  },
+  "engines": {
+    "npm": ">=3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

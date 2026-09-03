@@ -1,17 +1,17 @@
-import React, { useMemo, Fragment } from 'react'
 import { createForm } from '@formily/core'
-import { createSchemaField, FormProvider, observer } from '@formily/react'
+import { FormProvider, createSchemaField, observer } from '@formily/react'
 import {
-  Form,
-  Input,
-  Select,
   DatePicker,
-  FormItem,
-  FormGrid,
-  Submit,
-  Reset,
+  Form,
   FormButtonGroup,
-} from '@formily/antd-v5'
+  FormGrid,
+  FormItem,
+  Input,
+  Reset,
+  Select,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
+import React, { Fragment, useMemo } from 'react'
 
 const useCollapseGrid = (maxRows: number) => {
   const grid = useMemo(

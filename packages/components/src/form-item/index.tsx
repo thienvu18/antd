@@ -4,12 +4,12 @@ import {
   ExclamationCircleOutlined,
 } from '@ant-design/icons'
 import { isVoidField } from '@formily/core'
-import { connect, mapProps, ReactFC } from '@formily/react'
+import { ReactFC, connect, mapProps } from '@formily/react'
 import { Popover, Tooltip } from 'antd'
 import cls from 'classnames'
 import React, { useState } from 'react'
-import { FormLayoutShallowContext } from '../form-layout'
 import { pickDataProps, usePrefixCls } from '../__builtins__'
+import { FormLayoutShallowContext } from '../form-layout'
 import { useFormItemLayout, useOverflow } from './hooks'
 import useStyle from './style'
 import { IFormItemProps } from './types'
@@ -94,7 +94,7 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
     feedbackLayout === 'popover' ? (
       <Popover
         autoAdjustOverflow
-        overlayClassName={`${prefixCls}-popover`}
+        classNames={{ root: `${prefixCls}-popover` }}
         placement="top"
         content={
           <div

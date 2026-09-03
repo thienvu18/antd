@@ -21,7 +21,7 @@ export const createPortalProvider = (id: string | symbol) => {
         {props.children}
         <Observer>
           {() => {
-            if (portalId!) return <></>
+            if (!portalId) return <></>
             const portal = PortalMap.get(portalId)
             if (portal) return createPortal(portal, document.body)
             return <></>
@@ -46,15 +46,13 @@ export function createPortalRoot<T extends React.ReactNode>(
     }
   }
 
-  function unmount() {
+  async function unmount() {
     if (PortalMap.has(id)) {
       PortalMap.set(id, null)
     }
     if (host) {
-      const unmountResult = reactUnmount(host)
-      if (unmountResult && host.parentNode) {
-        host.parentNode?.removeChild(host)
-      }
+      await reactUnmount(host)
+      host.parentNode?.removeChild(host)
     }
   }
 

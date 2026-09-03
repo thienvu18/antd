@@ -1,13 +1,18 @@
-import React from 'react'
-import { Select, FormItem, FormButtonGroup, Submit } from '@formily/antd-v5'
 import {
+  Field as FieldType,
+  FormPathPattern,
   createForm,
   onFieldReact,
-  FormPathPattern,
-  Field as FieldType,
 } from '@formily/core'
-import { FormProvider, Field } from '@formily/react'
+import { Field, FormProvider } from '@formily/react'
 import { action } from '@formily/reactive'
+import {
+  FormButtonGroup,
+  FormItem,
+  Select,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
+import React from 'react'
 
 const useAsyncDataSource = (
   pattern: FormPathPattern,

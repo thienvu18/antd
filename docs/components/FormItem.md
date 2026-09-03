@@ -12,7 +12,7 @@ import {
   FormItem,
   FormButtonGroup,
   Submit,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 
@@ -48,7 +48,12 @@ export default () => (
 
 ```tsx
 import React from 'react'
-import { Input, FormItem, FormButtonGroup, Submit } from '@formily/antd-v5'
+import {
+  Input,
+  FormItem,
+  FormButtonGroup,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 
@@ -92,7 +97,12 @@ export default () => (
 
 ```tsx
 import React from 'react'
-import { Input, FormItem, FormButtonGroup, Submit } from '@formily/antd-v5'
+import {
+  Input,
+  FormItem,
+  FormButtonGroup,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, Field } from '@formily/react'
 
@@ -135,7 +145,7 @@ import {
   FormItem,
   NumberPicker,
   Switch,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 
@@ -396,7 +406,7 @@ import {
   FormItem,
   NumberPicker,
   Switch,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 
@@ -525,7 +535,7 @@ import {
   FormItem,
   NumberPicker,
   Switch,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 
@@ -656,7 +666,7 @@ import {
   FormLayout,
   NumberPicker,
   Switch,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 import { CheckCircleFilled, LoadingOutlined } from '@ant-design/icons'
@@ -918,7 +928,7 @@ import {
   FormItem,
   NumberPicker,
   Switch,
-} from '@formily/antd-v5'
+} from '@thienvu18/formily-antd-v6'
 import { createForm, onFieldChange } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 

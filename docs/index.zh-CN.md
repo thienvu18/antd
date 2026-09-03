@@ -1,9 +1,9 @@
 ---
-title: Formily - 阿里巴巴统一前端表单解决方案
+title: Formily Ant Design 6
 order: 10
 hero:
-  title: Formily Antd
-  desc: 基于Ant Design封装的优雅且易用的Formily2.x组件体系
+  title: Formily Antd v6
+  desc: 面向 React 19 与 Ant Design 6 的 Formily 2.x 组件体系
   actions:
     - text: 主站文档
       link: //formilyjs.org
@@ -25,8 +25,8 @@ footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by sel
 ## 安装
 
 ```bash
-npm install --save antd dayjs
-npm install --save @formily/core @formily/react @formily/antd-v5
+npm install --save react@19 react-dom@19 antd@6 @ant-design/icons@6 dayjs
+npm install --save @formily/core @formily/react @thienvu18/formily-antd-v6
 
 ```
 

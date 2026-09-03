@@ -1,6 +1,6 @@
 _Before_ submitting a pull request, please make sure the following is done...
 
-- [ ] Ensure the pull request title and commit message follow the [Commit Specific](https://github.com/alibaba/formily/blob/master/.github/GIT_COMMIT_SPECIFIC.md) in **English**.
+- [ ] Ensure the pull request title and commit message follow the [Commit Specific](https://github.com/thienvu18/antd/blob/master/.github/GIT_COMMIT_SPECIFIC.md) in **English**.
 - [ ] Fork the repo and create your branch from `master` or `master`.
 - [ ] If you've added code that should be tested, add tests!
 - [ ] If you've changed APIs, update the documentation.

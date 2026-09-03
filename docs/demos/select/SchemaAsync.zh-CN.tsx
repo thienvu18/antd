@@ -1,8 +1,13 @@
-import { FormButtonGroup, FormItem, Select, Submit } from '@formily/antd-v5'
-import { createForm, Field, FieldDataSource } from '@formily/core'
-import React from 'react'
-import { createSchemaField, FormProvider, ISchema } from '@formily/react'
+import { Field, FieldDataSource, createForm } from '@formily/core'
+import { FormProvider, ISchema, createSchemaField } from '@formily/react'
 import { action } from '@formily/reactive'
+import {
+  FormButtonGroup,
+  FormItem,
+  Select,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
+import React from 'react'
 
 const SchemaField = createSchemaField({
   components: {

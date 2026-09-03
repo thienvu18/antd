@@ -1,7 +1,12 @@
-import { CSSProperties } from 'react'
-import { GenerateStyle } from '../../__builtins__'
+import type { CSSObject } from '@ant-design/cssinjs'
+import type { GlobalToken } from 'antd/es/theme/interface'
+import type { CSSProperties } from 'react'
+import type { GenerateStyle, TokenWithCommonCls } from '../../__builtins__'
 
-export const genOtherStyle: GenerateStyle = (token) => {
+export const genOtherStyle: GenerateStyle<
+  TokenWithCommonCls<GlobalToken>,
+  CSSObject
+> = (token) => {
   const {
     componentCls,
     colorError,
@@ -548,5 +553,5 @@ export const genOtherStyle: GenerateStyle = (token) => {
         },
       },
     },
-  }
+  } as CSSObject
 }

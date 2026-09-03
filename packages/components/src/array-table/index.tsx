@@ -1,9 +1,9 @@
 import { ArrayField, FieldDisplayTypes, GeneralField } from '@formily/core'
 import { Schema } from '@formily/json-schema'
 import {
-  observer,
   ReactFC,
   RecursionField,
+  observer,
   useField,
   useFieldSchema,
 } from '@formily/react'
@@ -18,25 +18,24 @@ import {
   Table,
   TableProps,
 } from 'antd'
-import { ColumnProps, ColumnsType } from 'antd/es/table'
+import type { ColumnProps, ColumnsType } from 'antd/es/table'
 import cls from 'classnames'
 import React, {
+  Fragment,
   createContext,
   forwardRef,
-  Fragment,
-  useCallback,
   useContext,
   useEffect,
   useRef,
   useState,
 } from 'react'
-import { ArrayBase, ArrayBaseMixins } from '../array-base'
 import {
   ISortableContainerProps,
   SortableContainer,
   SortableElement,
   usePrefixCls,
 } from '../__builtins__'
+import { ArrayBase, ArrayBaseMixins } from '../array-base'
 import useStyle from './style'
 
 interface ObservableColumnSource {
@@ -73,7 +72,7 @@ const SortableRow = SortableElement((props) => <tr {...props} />)
 
 const SortableBodyRaw = SortableContainer<
   React.HTMLAttributes<HTMLTableSectionElement> & {
-    tbodyRef: React.LegacyRef<HTMLTableSectionElement>
+    tbodyRef: React.Ref<HTMLTableSectionElement>
   }
 >(({ tbodyRef, ...props }) => <tbody {...props} ref={tbodyRef} />)
 const SortableBody = forwardRef<
@@ -261,7 +260,7 @@ const ArrayTablePagination: ReactFC<IArrayTablePaginationProps> = (props) => {
   const prefixCls = usePrefixCls('formily-array-table')
   const [wrapSSR, hashId] = useStyle(prefixCls)
   const [pageSize, setPageSize] = useState(props.pageSize || 10)
-  const size = props.size || 'default'
+  const size = props.size
   const dataSource = props.dataSource || []
   const showPagination = props.showPagination
   const startIndex = (current - 1) * pageSize
@@ -418,7 +417,7 @@ const InternalArrayTable: ReactFC<TableProps<any>> = observer(
         dataSource={dataSource}
         showPagination={showPagination}
       >
-        {(dataSource, pager, { startIndex }) => {
+        {(dataSource, pager) => {
           return (
             <div ref={ref} className={cls(prefixCls, hashId)}>
               <ArrayBase>

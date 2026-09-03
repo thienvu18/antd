@@ -7,20 +7,29 @@ global['sleep'] = (time) => {
 }
 
 global['requestAnimationFrame'] = (fn) => setTimeout(fn)
+globalThis.IS_REACT_ACT_ENVIRONMENT = true
 
 global.document.documentElement.style['grid-column-gap'] = true
 
-// 把 console.error 转换成 error，方便断言
+// Turn React and Ant Design runtime diagnostics into test failures. Keeping the
+// original arguments makes a regression actionable instead of silently hiding it.
 ;(() => {
-  const spy = jest.spyOn(console, 'error')
+  const fail = (...messages: unknown[]) => {
+    throw new Error(messages.map(String).join(' '))
+  }
+  const errorSpy = jest.spyOn(console, 'error')
+  const warnSpy = jest.spyOn(console, 'warn')
+  const previousReportError = globalThis.reportError
+
   beforeAll(() => {
-    spy.mockImplementation((message) => {
-      console.log(message)
-      throw new Error(message)
-    })
+    errorSpy.mockImplementation(fail)
+    warnSpy.mockImplementation(fail)
+    globalThis.reportError = fail
   })
 
   afterAll(() => {
-    spy.mockRestore()
+    errorSpy.mockRestore()
+    warnSpy.mockRestore()
+    globalThis.reportError = previousReportError
   })
 })()

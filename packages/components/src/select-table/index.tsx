@@ -1,17 +1,16 @@
 import { FieldDisplayTypes, GeneralField } from '@formily/core'
 import {
-  observer,
   ReactFC,
   RecursionField,
   Schema,
+  observer,
   useField,
   useFieldSchema,
 } from '@formily/react'
 import { isArr, isBool, isFn } from '@formily/shared'
 import { Input, Table } from 'antd'
-import { ColumnsType } from 'antd/es/table'
-import { SearchProps } from 'antd/lib/input'
-import { ColumnProps, TableProps } from 'antd/lib/table'
+import type { SearchProps } from 'antd/es/input'
+import type { ColumnProps, ColumnsType, TableProps } from 'antd/es/table'
 import cls from 'classnames'
 import React, { useMemo, useState } from 'react'
 import { usePrefixCls } from '../__builtins__'
@@ -360,7 +359,9 @@ const InternalSelectTable: ReactFC<ISelectTableProps> = observer((props) => {
                   : {
                       renderCell: (checked, record, index, originNode) => {
                         return React.cloneElement(
-                          originNode as React.ReactElement,
+                          originNode as React.ReactElement<{
+                            indeterminate?: boolean
+                          }>,
                           {
                             indeterminate: getIndeterminate(
                               record,

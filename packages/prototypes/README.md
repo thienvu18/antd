@@ -1,9 +1,9 @@
-# @formily/antd-v5-prototypes
+# @thienvu18/formily-antd-v6-prototypes
 
 > Formily Designable Component Adaptor
 
 ## Install
 
 ```bash
-npm install @formily/antd-v5-prototypes --save
+npm install @thienvu18/formily-antd-v6-prototypes --save
 ```

@@ -1,15 +1,10 @@
-# formily antd repository
+# Formily Ant Design 6
 
 English | [简体中文](./README.zh-CN.md)
 
 <p align="center">
 <img src="https://img.alicdn.com/tfs/TB1fHhZu4D1gK0jSZFyXXciOVXa-2500-1200.png">
-<img src="https://img.shields.io/npm/dt/@formily/antd-v5"/>
-<img src="https://img.shields.io/npm/dm/@formily/antd-v5"/>
-<a href="https://www.npmjs.com/package/@formily/antd-v5"><img src="https://img.shields.io/npm/v/@formily/antd-v5.svg"></a>
-<a href="https://codecov.io/gh/formilyjs/antd">
-  <img src="https://codecov.io/gh/formilyjs/antd/branch/master/graph/badge.svg?token=3V9RU8Wh9d"/>
-</a>
+<a href="https://github.com/thienvu18/antd"><img src="https://img.shields.io/github/v/release/thienvu18/antd?label=source"></a>
 <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
 <a href="https://github.com/actions-cool/issues-helper">
   <img src="https://img.shields.io/badge/using-issues--helper-blueviolet"/>
@@ -17,6 +12,15 @@ English | [简体中文](./README.zh-CN.md)
 </p>
 
 ---
+
+## Installation
+
+```bash
+npm install react@19 react-dom@19 antd@6 @ant-design/icons@6 dayjs
+npm install @formily/core @formily/react @thienvu18/formily-antd-v6
+```
+
+The package targets React 19 and Ant Design 6. Source, issues, and migration notes are maintained at [thienvu18/antd](https://github.com/thienvu18/antd).
 
 ## Overview
 
@@ -37,11 +41,11 @@ The Awesome Components Library with Formily & Ant Design.
 
 ## WebSite
 
-<https://antd5.formilyjs.org>
+<https://github.com/thienvu18/antd>
 
 ## Community
 
-- [formily](https://github.com/alibaba/formily)
+- [formily](https://github.com/formilyjs/formily)
 - [formilyjs](https://github.com/formilyjs)
 - [designable](https://github.com/alibaba/designable)
 
@@ -52,7 +56,7 @@ The Awesome Components Library with Formily & Ant Design.
 ## Contributors
 
 This project exists thanks to all the people who contribute.
-<a href="https://github.com/formilyjs/antd/graphs/contributors"><img src="https://contrib.rocks/image?repo=formilyjs/antd" /></a>
+<a href="https://github.com/thienvu18/antd/graphs/contributors"><img src="https://contrib.rocks/image?repo=thienvu18/antd" /></a>
 
 ## LICENSE
 

@@ -1,16 +1,20 @@
-import { FormButtonGroup, FormItem, Select, Submit } from '@formily/antd-v5'
 import {
-  createForm,
   Field,
   FieldDataSource,
   FormPathPattern,
+  createForm,
   onFieldInit,
   onFieldReact,
 } from '@formily/core'
-import { createSchemaField, FormProvider } from '@formily/react'
+import { FormProvider, createSchemaField } from '@formily/react'
 import { action, observable } from '@formily/reactive'
+import {
+  FormButtonGroup,
+  FormItem,
+  Select,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
 import { fetch } from 'mfetch'
-import React from 'react'
 
 let timeout: NodeJS.Timeout | null = null
 let currentValue: string

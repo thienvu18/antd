@@ -1,9 +1,9 @@
 ---
-title: Formily-Alibaba unified front-end form solution
+title: Formily Ant Design 6
 order: 10
 hero:
-  title: Formily Antd
-  desc: Formily Component System Based on Ant Design Encapsulation
+  title: Formily Antd v6
+  desc: Formily components for React 19 and Ant Design 6
   actions:
     - text: Home Site
       link: //formilyjs.org
@@ -25,7 +25,7 @@ footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by sel
 ## Installation
 
 ```bash
-npm install --save antd dayjs
-npm install --save @formily/core @formily/react @formily/antd-v5
+npm install --save react@19 react-dom@19 antd@6 @ant-design/icons@6 dayjs
+npm install --save @formily/core @formily/react @thienvu18/formily-antd-v6
 
 ```

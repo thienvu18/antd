@@ -2,7 +2,7 @@
 
 ## Introduction
 
-@formily/antd-v5 is a professional component library for form scenarios based on Ant Design V5 encapsulation. It has the following characteristics:
+@thienvu18/formily-antd-v6 is a professional component library for form scenarios based on React 19 and Ant Design 6. It has the following characteristics:
 
 - Only Formily 2.x is supported
   - Most components are not backward compatible
@@ -60,8 +60,8 @@
 ## Installation
 
 ```bash
-npm install --save antd dayjs
-npm install --save @formily/core @formily/react @formily/antd-v5
+npm install --save react@19 react-dom@19 antd@6 @ant-design/icons@6 dayjs
+npm install --save @formily/core @formily/react @thienvu18/formily-antd-v6
 
 ```
 

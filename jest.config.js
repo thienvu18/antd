@@ -1,20 +1,22 @@
 module.exports = {
   collectCoverage: true,
+  coverageProvider: 'v8',
   verbose: true,
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
   testMatch: ['**/__tests__/**/*.spec.[jt]s?(x)'],
   setupFilesAfterEnv: [
-    require.resolve('jest-dom/extend-expect'),
+    require.resolve('@testing-library/jest-dom'),
     './global.config.ts',
   ],
-  // moduleNameMapper: process.env.TEST_ENV === 'production' ? undefined : alias,
-  globals: {
-    'ts-jest': {
-      babelConfig: false,
-      tsconfig: './tsconfig.jest.json',
-      diagnostics: false,
-    },
+  transform: {
+    '^.+\\.[jt]sx?$': [
+      'ts-jest',
+      {
+        tsconfig: './tsconfig.jest.json',
+        diagnostics: true,
+      },
+    ],
   },
   coveragePathIgnorePatterns: [
     '/node_modules/',

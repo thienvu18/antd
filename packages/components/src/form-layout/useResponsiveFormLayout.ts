@@ -25,7 +25,7 @@ interface ICalculateProps {
 
 interface IUseResponsiveFormLayout {
   (props: IProps): {
-    ref: React.RefObject<HTMLDivElement>
+    ref: React.RefObject<HTMLDivElement | null>
     props: any
   }
 }
@@ -39,10 +39,10 @@ const calcBreakpointIndex: ICalcBreakpointIndex = (breakpoints, width) => {
   }
 }
 
-const calcFactor = <T>(value: T | T[], breakpointIndex?: number): T => {
+export const calcFactor = <T>(value: T | T[], breakpointIndex?: number): T => {
   if (Array.isArray(value)) {
     if (breakpointIndex === -1) return value[0]
-    return value[breakpointIndex || value.length - 1] ?? value[value.length - 1]
+    return value[breakpointIndex ?? value.length - 1] ?? value[value.length - 1]
   } else {
     return value
   }

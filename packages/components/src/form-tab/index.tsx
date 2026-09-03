@@ -1,14 +1,14 @@
 import { Schema, SchemaKey } from '@formily/json-schema'
 import {
-  observer,
   ReactFC,
   RecursionField,
+  observer,
   useField,
   useFieldSchema,
 } from '@formily/react'
 import { markRaw, model } from '@formily/reactive'
 import { Badge, Tabs } from 'antd'
-import { TabPaneProps, TabsProps } from 'antd/lib/tabs'
+import type { TabPaneProps, TabsProps } from 'antd/es/tabs'
 import cls from 'classnames'
 import React, { Fragment, useMemo } from 'react'
 import { usePrefixCls } from '../__builtins__'

@@ -1,15 +1,14 @@
-import React from 'react'
-import {
-  Input,
-  Select,
-  Form,
-  FormItem,
-  FormGrid,
-  FormButtonGroup,
-  Submit,
-} from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { Field } from '@formily/react'
+import {
+  Form,
+  FormButtonGroup,
+  FormGrid,
+  FormItem,
+  Input,
+  Select,
+  Submit,
+} from '@thienvu18/formily-antd-v6'
 
 const form = createForm()
 const Demo = () => {

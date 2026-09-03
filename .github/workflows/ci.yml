@@ -2,46 +2,86 @@ name: Node CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    branches:
-      - master
+    branches: [master]
+
+env:
+  CI: true
+  NODE_OPTIONS: --max_old_space_size=4096
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    if: contains(github.event.head_commit.message, 'chore(versions)') == false
-    strategy:
-      matrix:
-        node_version: [14.x]
-        os: [ubuntu-latest]
+  lint:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn lint
+      - run: yarn audit:deprecated
 
-      - run: yarn -v
-      - run: yarn --ignore-engines
-      - name: ESlint
-        uses: reviewdog/action-eslint@v1
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          reporter: github-check
-          eslint_flags: '.'
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn typecheck
+
+  package-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
       - run: yarn build
-      - run: yarn test:prod
-        env:
-          CI: true
-          HEADLESS: false
-          PROGRESS: none
-          NODE_ENV: test
-          NODE_OPTIONS: --max_old_space_size=4096
 
-      # - name: Upload coverage to Codecov
-      #   uses: codecov/codecov-action@v1
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}
-      #     fail_ci_if_error: true
-      #     verbose: true
+  docs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build:docs
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn test:prod --runInBand
+
+  packed-consumer:
+    needs: [lint, typecheck, package-build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn verify:pack

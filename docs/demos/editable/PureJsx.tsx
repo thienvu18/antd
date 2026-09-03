@@ -1,3 +1,5 @@
+import { createForm } from '@formily/core'
+import { Field, FormProvider, ObjectField, VoidField } from '@formily/react'
 import {
   DatePicker,
   Editable,
@@ -5,9 +7,7 @@ import {
   FormItem,
   Input,
   Submit,
-} from '@formily/antd-v5'
-import { createForm } from '@formily/core'
-import { Field, FormProvider, ObjectField, VoidField } from '@formily/react'
+} from '@thienvu18/formily-antd-v6'
 import React from 'react'
 
 const form = createForm()

@@ -30,9 +30,7 @@ type FormDrawerRenderer =
 
 type DrawerTitle = string | number | React.ReactElement
 
-type EventType =
-  | React.KeyboardEvent<HTMLDivElement>
-  | React.MouseEvent<HTMLDivElement | HTMLButtonElement>
+type DrawerCloseEvent = Parameters<NonNullable<DrawerProps['onClose']>>[0]
 
 const isDrawerTitle = (props: any): props is DrawerTitle => {
   return (
@@ -56,8 +54,8 @@ export interface IFormDrawer {
   close(): void
 }
 
-export interface IDrawerProps extends DrawerProps {
-  onClose?: (e: EventType) => void | boolean
+export interface IDrawerProps extends Omit<DrawerProps, 'onClose'> {
+  onClose?: (e: DrawerCloseEvent) => void | boolean
   loadingText?: React.ReactNode
 }
 interface IEnv {
@@ -109,7 +107,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
     afterOpenChange: (open: boolean) => {
       props?.afterOpenChange?.(open)
       if (open) return
-      root.unmount()
+      void root.unmount()
     },
   }
   const DrawerContent = observer(() => {
@@ -174,8 +172,8 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
 
 const DrawerExtra: ReactFC = (props) => {
   const ref = useRef<HTMLDivElement>(null)
-  const [extra, setExtra] = useState<HTMLDivElement>()
-  const extraRef = useRef<HTMLDivElement>()
+  const [extra, setExtra] = useState<HTMLDivElement | null>(null)
+  const extraRef = useRef<HTMLDivElement | null>(null)
   const prefixCls = usePrefixCls('drawer')
   useLayoutEffect(() => {
     const content = ref.current
@@ -207,8 +205,8 @@ const DrawerExtra: ReactFC = (props) => {
 
 const DrawerFooter: ReactFC = (props) => {
   const ref = useRef<HTMLDivElement>(null)
-  const [footer, setFooter] = useState<HTMLDivElement>()
-  const footerRef = useRef<HTMLDivElement>()
+  const [footer, setFooter] = useState<HTMLDivElement | null>(null)
+  const footerRef = useRef<HTMLDivElement | null>(null)
   const prefixCls = usePrefixCls('drawer')
   useLayoutEffect(() => {
     const content = ref.current?.closest(`.${prefixCls}-content`)

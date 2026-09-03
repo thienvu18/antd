@@ -2,7 +2,7 @@
 
 ## 介绍
 
-@formily/antd-v5 是基于 Ant Design V5 封装的针对表单场景专业级(Professional)组件库，它主要有以下几个特点：
+@thienvu18/formily-antd-v6 是面向 React 19 与 Ant Design 6 的专业 Formily 组件库，它主要有以下几个特点：
 
 - 仅支持 Formily2.x
   - 大部分组件无法向后兼容
@@ -60,8 +60,8 @@
 ## 安装
 
 ```bash
-npm install --save antd dayjs
-npm install --save @formily/core @formily/react @formily/antd-v5
+npm install --save react@19 react-dom@19 antd@6 @ant-design/icons@6 dayjs
+npm install --save @formily/core @formily/react @thienvu18/formily-antd-v6
 
 ```
 
