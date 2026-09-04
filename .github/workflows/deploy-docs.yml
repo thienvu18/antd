@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -27,19 +27,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          cache: yarn
+          node-version: 22.x
 
       - name: Enable Corepack & Install dependencies
         run: |
           corepack enable
-          yarn install --immutable
+          corepack yarn install --immutable
 
       - name: Build packages
-        run: yarn build
+        run: corepack yarn build
 
       - name: Build documentation
-        run: yarn build:docs
+        run: corepack yarn build:docs
         env:
           NODE_ENV: production
           NODE_OPTIONS: --max_old_space_size=4096
