@@ -1,46 +1,55 @@
-export default {
-  mode: 'site',
-  logo: '//img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg',
-  title: 'Formily Ant Design v6',
-  hash: true,
-  favicon:
-    '//img.alicdn.com/imgextra/i3/O1CN01XtT3Tv1Wd1b5hNVKy_!!6000000002810-55-tps-360-360.svg',
-  outputPath: './doc-site',
-  locales: [
-    ['en-US', 'English'],
-    ['zh-CN', '中文'],
-  ],
-  navs: {
-    'zh-CN': [
-      {
-        title: 'Ant Design v6',
-        path: '/zh-CN/components',
-      },
-      {
-        title: '主站',
-        path: 'https://v2.formilyjs.org/',
-      },
-      {
-        title: 'GITHUB',
-        path: 'https://github.com/thienvu18/antd',
-      },
-    ],
-    'en-US': [
-      {
-        title: 'Ant Design v6',
-        path: '/components',
-      },
-      {
-        title: 'Home Site',
-        path: 'https://formilyjs.org',
-      },
-      {
-        title: 'GITHUB',
-        path: 'https://github.com/thienvu18/antd',
-      },
-    ],
-  },
+import { defineConfig } from 'dumi'
 
+const isProd = process.env.NODE_ENV === 'production'
+const publicPath = process.env.PUBLIC_PATH || (isProd ? '/antd/' : '/')
+const base = process.env.BASE || (isProd ? '/antd/' : '/')
+
+export default defineConfig({
+  base,
+  publicPath,
+  outputPath: 'dist',
+  hash: true,
+  favicons: [
+    '//img.alicdn.com/imgextra/i3/O1CN01XtT3Tv1Wd1b5hNVKy_!!6000000002810-55-tps-360-360.svg',
+  ],
+  locales: [
+    { id: 'en-US', name: 'English' },
+    { id: 'zh-CN', name: '中文' },
+  ],
+  themeConfig: {
+    name: 'Formily Ant Design v6',
+    logo: '//img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg',
+    nav: {
+      'zh-CN': [
+        {
+          title: 'Ant Design v6',
+          link: '/zh-CN/components',
+        },
+        {
+          title: '主站',
+          link: 'https://v2.formilyjs.org/',
+        },
+        {
+          title: 'GITHUB',
+          link: 'https://github.com/thienvu18/antd',
+        },
+      ],
+      'en-US': [
+        {
+          title: 'Ant Design v6',
+          link: '/components',
+        },
+        {
+          title: 'Home Site',
+          link: 'https://formilyjs.org',
+        },
+        {
+          title: 'GITHUB',
+          link: 'https://github.com/thienvu18/antd',
+        },
+      ],
+    },
+  },
   headScripts: [
     `
     function loadAd(){
@@ -161,4 +170,4 @@ export default {
     }
     `,
   ],
-}
+})
