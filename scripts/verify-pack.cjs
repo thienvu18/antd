@@ -4,6 +4,7 @@ const {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  readdirSync,
   rmSync,
   writeFileSync,
 } = require('fs')
@@ -17,6 +18,10 @@ const packages = [
   '@thienvu18/formily-antd-v6-setters',
   '@thienvu18/formily-antd-v6-settings-form',
 ]
+const packageImports = packages.map((name, index) => ({
+  name,
+  identifier: `package${index}`,
+}))
 
 const root = process.cwd()
 const workDir = mkdtempSync(join(tmpdir(), 'formily-antd-v6-pack-'))
@@ -49,6 +54,7 @@ function npmEnvironment() {
 
 try {
   const tarballs = packages.map((name) => {
+    const existingFiles = new Set(readdirSync(packDir))
     const output = execFileSync(
       'npm',
       ['pack', '--json', '--pack-destination', packDir, '--workspace', name],
@@ -58,13 +64,25 @@ try {
       }
     )
     const packed = JSON.parse(output.toString())[0]
-    const required = ['package.json', 'lib/index.js', 'lib/index.d.ts']
+    const required = [
+      'package.json',
+      'lib/index.js',
+      'lib/index.d.ts',
+      'esm/index.js',
+      'esm/index.d.ts',
+    ]
     const paths = new Set(packed.files.map((file) => file.path))
     const missing = required.filter((file) => !paths.has(file))
     if (missing.length) {
       throw new Error(`${name} pack is missing ${missing.join(', ')}`)
     }
-    return join(packDir, packed.filename)
+    const tarball = readdirSync(packDir).find(
+      (file) => !existingFiles.has(file) && file.endsWith('.tgz')
+    )
+    if (!tarball) {
+      throw new Error(`${name} pack did not create a tarball`)
+    }
+    return join(packDir, tarball)
   })
 
   writeFileSync(
@@ -83,6 +101,7 @@ try {
           'react-dom': '^19.2.8',
           'react-is': '^19.2.8',
           typescript: '5.2.2',
+          vite: '^8.2.2',
         },
       },
       null,
@@ -125,6 +144,7 @@ try {
       "const { flushSync } = require('react-dom')",
       "const { ConfigProvider } = require('antd')",
       "const { Input } = require('@thienvu18/formily-antd-v6')",
+      ...packages.map((name) => `if (require('${name}') === undefined) throw new Error('packed ${name} did not resolve as CommonJS')`),
       'const window = new Window()',
       'global.window = window',
       'global.document = window.document',
@@ -142,6 +162,22 @@ try {
       '',
     ].join('\n')
   )
+  writeFileSync(
+    join(consumerDir, 'index.html'),
+    '<div id="root"></div><script type="module" src="/vite-entry.tsx"></script>\n'
+  )
+  writeFileSync(
+    join(consumerDir, 'vite-entry.tsx'),
+    [
+      ...packageImports.map(({ name, identifier }) => `import * as ${identifier} from '${name}'`),
+      "import { Input } from '@thienvu18/formily-antd-v6'",
+      "import { createRoot } from 'react-dom/client'",
+      "import { createElement } from 'react'",
+      `if ([${packageImports.map(({ identifier }) => identifier).join(', ')}].some((module) => module === undefined)) throw new Error('packed package did not resolve as ESM')`,
+      "createRoot(document.getElementById('root')!).render(createElement(Input))",
+      '',
+    ].join('\n')
+  )
 
   run(
     'npm',
@@ -153,6 +189,7 @@ try {
     ['--project', 'tsconfig.json'],
     consumerDir
   )
+  run(join(consumerDir, 'node_modules/.bin/vite'), ['build'], consumerDir)
   run(process.execPath, ['render.cjs'], consumerDir)
 } finally {
   if (existsSync(workDir)) rmSync(workDir, { recursive: true, force: true })

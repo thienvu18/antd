@@ -1,6 +1,6 @@
 {
   "name": "@thienvu18/formily-antd-v6-prototypes",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/thienvu18/antd#readme",
   "bugs": {
     "url": "https://github.com/thienvu18/antd/issues"
@@ -10,6 +10,10 @@
     "url": "git+https://github.com/thienvu18/antd.git"
   },
   "license": "MIT",
+  "files": [
+    "lib",
+    "esm"
+  ],
   "sideEffects": [
     "dist/*",
     "esm/*.js",
